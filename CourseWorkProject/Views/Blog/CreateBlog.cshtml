@@ -1,0 +1,24 @@
+﻿@model CourseWorkProject.Models.Blog
+@{
+    ViewBag.Title = "CreateBlog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Blog</h2>
+@using (Html.BeginForm("CreateBlog", "Blog", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.LabelFor(h => h.Title)
+        @Html.TextBoxFor(h => h.Title, new { @class = "form-control form-control-lg",autocomplete = "off" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(h => h.Content)
+        @Html.TextAreaFor(h => h.Content, new { @class = "form-control form-control-lg" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(h => h.FileName)
+        @Html.TextBox("File", "", new { @class = "form-control-file", type = "File" })
+        @ViewBag.Message
+    </div>
+    <button class="btn btn-success">Create</button>
+}

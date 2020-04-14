@@ -1,0 +1,43 @@
+﻿@model List<CourseWorkProject.Models.User>
+@{
+    ViewBag.Title = "ListStudent";
+    Layout = "~/Areas/Tutor/Views/Shared/_TutorLayout.cshtml";
+}
+
+<h2>ListStudent</h2>
+@if (Model.Count > 0)
+{
+    <div id="student-container">
+        <table>
+            <thead style="margin-bottom:20px;">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Avatar</th>
+                    <th>Birthday</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var stu in Model)
+                {
+                    if (stu.Role.id == 1)
+                    {
+                        <tr id="stu-info">
+                            <td style="width:200px">@Html.DisplayFor(h => stu.Profile.id)</td>
+                            <td style="width:200px">@Html.DisplayFor(h => stu.Profile.Name)</td>
+                            <td style="width:200px"><img src="@Url.Content("~/images/" + stu.Profile.img)" style="width:100px" /></td>
+                            <td style="width:200px">@Html.DisplayFor(h => stu.Profile.Birthday)</td>
+                            <td style="width:200px">@Html.DisplayFor(h => stu.Profile.Email)</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <h2>You don't have any students</h2>
+}
+
